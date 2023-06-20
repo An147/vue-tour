@@ -144,7 +144,7 @@ export default {
       let futureStep = this.currentStep - 1
 
       let process = () => new Promise((resolve, reject) => {
-        this.customCallbacks.onPreviousStep(this.currentStep)
+        this.customCallbacks.onPreviousStep(this.currentStep, this.steps[this.currentStep])
         this.currentStep = futureStep
         resolve()
       })
@@ -162,13 +162,6 @@ export default {
 
         await process()
 
-        if (typeof step.after !== 'undefined') {
-          try {
-            await step.after('previous')
-          } catch (e) {
-            return Promise.reject(e)
-          }
-        }
       }
 
       return Promise.resolve()
@@ -177,13 +170,13 @@ export default {
       let futureStep = this.currentStep + 1
 
       let process = () => new Promise((resolve, reject) => {
-        this.customCallbacks.onNextStep(this.currentStep)
+        this.customCallbacks.onNextStep(this.currentStep, this.steps[this.currentStep])
         this.currentStep = futureStep
         resolve()
       })
 
       if (futureStep < this.numberOfSteps && this.currentStep !== -1) {
-
+        
         let step = this.steps[futureStep]
 
         if (typeof step.before !== 'undefined') {
@@ -196,13 +189,6 @@ export default {
 
         await process()
 
-        if (typeof step.after !== 'undefined') {
-          try {
-            await step.after('next')
-          } catch (e) {
-            return Promise.reject(e)
-          }
-        }
       }
 
       return Promise.resolve()
