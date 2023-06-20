@@ -151,6 +151,7 @@ export default {
 
       if (futureStep > -1) {
         let step = this.steps[futureStep]
+
         if (typeof step.before !== 'undefined') {
           try {
             await step.before('previous')
@@ -158,7 +159,16 @@ export default {
             return Promise.reject(e)
           }
         }
+
         await process()
+
+        if (typeof step.after !== 'undefined') {
+          try {
+            await step.after('previous')
+          } catch (e) {
+            return Promise.reject(e)
+          }
+        }
       }
 
       return Promise.resolve()
@@ -173,7 +183,9 @@ export default {
       })
 
       if (futureStep < this.numberOfSteps && this.currentStep !== -1) {
+
         let step = this.steps[futureStep]
+
         if (typeof step.before !== 'undefined') {
           try {
             await step.before('next')
@@ -181,7 +193,16 @@ export default {
             return Promise.reject(e)
           }
         }
+
         await process()
+
+        if (typeof step.after !== 'undefined') {
+          try {
+            await step.after('next')
+          } catch (e) {
+            return Promise.reject(e)
+          }
+        }
       }
 
       return Promise.resolve()
