@@ -4791,12 +4791,12 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"72204f46-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VTour.vue?vue&type=template&id=f4b97d58&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5c2140ae-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VTour.vue?vue&type=template&id=50faa308&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"v-tour"},[_vm._t("default",[(_vm.steps[_vm.currentStep])?_c('v-step',{key:_vm.currentStep,attrs:{"step":_vm.steps[_vm.currentStep],"previous-step":_vm.previousStep,"next-step":_vm.nextStep,"stop":_vm.stop,"skip":_vm.skip,"finish":_vm.finish,"is-first":_vm.isFirst,"is-last":_vm.isLast,"labels":_vm.customOptions.labels,"enabled-buttons":_vm.customOptions.enabledButtons,"highlight":_vm.customOptions.highlight,"stop-on-fail":_vm.customOptions.stopOnTargetNotFound,"debug":_vm.customOptions.debug},on:{"targetNotFound":function($event){return _vm.$emit('targetNotFound', $event)}}}):_vm._e()],{"currentStep":_vm.currentStep,"steps":_vm.steps,"previousStep":_vm.previousStep,"nextStep":_vm.nextStep,"stop":_vm.stop,"skip":_vm.skip,"finish":_vm.finish,"isFirst":_vm.isFirst,"isLast":_vm.isLast,"labels":_vm.customOptions.labels,"enabledButtons":_vm.customOptions.enabledButtons,"highlight":_vm.customOptions.highlight,"debug":_vm.customOptions.debug})],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VTour.vue?vue&type=template&id=f4b97d58&
+// CONCATENATED MODULE: ./src/components/VTour.vue?vue&type=template&id=50faa308&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
 var es_promise = __webpack_require__("e6cf");
@@ -5192,7 +5192,7 @@ var KEYS = {
                 };
 
                 if (!(futureStep > -1)) {
-                  _context2.next = 15;
+                  _context2.next = 24;
                   break;
                 }
 
@@ -5221,14 +5221,33 @@ var KEYS = {
                 return process();
 
               case 15:
+                if (!(typeof step.after !== 'undefined')) {
+                  _context2.next = 24;
+                  break;
+                }
+
+                _context2.prev = 16;
+                _context2.next = 19;
+                return step.after('previous');
+
+              case 19:
+                _context2.next = 24;
+                break;
+
+              case 21:
+                _context2.prev = 21;
+                _context2.t1 = _context2["catch"](16);
+                return _context2.abrupt("return", Promise.reject(_context2.t1));
+
+              case 24:
                 return _context2.abrupt("return", Promise.resolve());
 
-              case 16:
+              case 25:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[5, 10]]);
+        }, _callee2, null, [[5, 10], [16, 21]]);
       }))();
     },
     nextStep: function nextStep() {
@@ -5252,7 +5271,7 @@ var KEYS = {
                 };
 
                 if (!(futureStep < _this3.numberOfSteps && _this3.currentStep !== -1)) {
-                  _context3.next = 15;
+                  _context3.next = 24;
                   break;
                 }
 
@@ -5281,14 +5300,33 @@ var KEYS = {
                 return process();
 
               case 15:
+                if (!(typeof step.after !== 'undefined')) {
+                  _context3.next = 24;
+                  break;
+                }
+
+                _context3.prev = 16;
+                _context3.next = 19;
+                return step.after('next');
+
+              case 19:
+                _context3.next = 24;
+                break;
+
+              case 21:
+                _context3.prev = 21;
+                _context3.t1 = _context3["catch"](16);
+                return _context3.abrupt("return", Promise.reject(_context3.t1));
+
+              case 24:
                 return _context3.abrupt("return", Promise.resolve());
 
-              case 16:
+              case 25:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[5, 10]]);
+        }, _callee3, null, [[5, 10], [16, 21]]);
       }))();
     },
     stop: function stop() {
@@ -5455,7 +5493,7 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var VTour = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"72204f46-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VStep.vue?vue&type=template&id=54f9a632&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5c2140ae-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VStep.vue?vue&type=template&id=54f9a632&scoped=true&
 var VStepvue_type_template_id_54f9a632_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:'v-step-' + _vm.hash,staticClass:"v-step",class:{ 'v-step--sticky': _vm.isSticky },attrs:{"id":'v-step-' + _vm.hash}},[_vm._t("header",[(_vm.step.header)?_c('div',{staticClass:"v-step__header"},[(_vm.step.header.title)?_c('div',{domProps:{"innerHTML":_vm._s(_vm.step.header.title)}}):_vm._e()]):_vm._e()]),_vm._t("content",[_c('div',{staticClass:"v-step__content"},[(_vm.step.content)?_c('div',{domProps:{"innerHTML":_vm._s(_vm.step.content)}}):_c('div',[_vm._v("This is a demo step! The id of this step is "+_vm._s(_vm.hash)+" and it targets "+_vm._s(_vm.step.target)+".")])])]),_vm._t("actions",[_c('div',{staticClass:"v-step__buttons"},[(!_vm.isLast && _vm.isButtonEnabled('buttonSkip'))?_c('button',{staticClass:"v-step__button v-step__button-skip",on:{"click":function($event){$event.preventDefault();return _vm.skip($event)}}},[_vm._v(_vm._s(_vm.labels.buttonSkip))]):_vm._e(),(!_vm.isFirst && _vm.isButtonEnabled('buttonPrevious'))?_c('button',{staticClass:"v-step__button v-step__button-previous",on:{"click":function($event){$event.preventDefault();return _vm.previousStep($event)}}},[_vm._v(_vm._s(_vm.labels.buttonPrevious))]):_vm._e(),(!_vm.isLast && _vm.isButtonEnabled('buttonNext'))?_c('button',{staticClass:"v-step__button v-step__button-next",on:{"click":function($event){$event.preventDefault();return _vm.nextStep($event)}}},[_vm._v(_vm._s(_vm.labels.buttonNext))]):_vm._e(),(_vm.isLast && _vm.isButtonEnabled('buttonStop'))?_c('button',{staticClass:"v-step__button v-step__button-stop",on:{"click":function($event){$event.preventDefault();return _vm.finish($event)}}},[_vm._v(_vm._s(_vm.labels.buttonStop))]):_vm._e()])]),_c('div',{staticClass:"v-step__arrow",class:{ 'v-step__arrow--dark': _vm.step.header && _vm.step.header.title },attrs:{"data-popper-arrow":""}})],2)}
 var VStepvue_type_template_id_54f9a632_scoped_true_staticRenderFns = []
 
