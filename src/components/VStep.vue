@@ -167,7 +167,10 @@ export default {
 
         this.targetElement.classList.add(HIGHLIGHT.classes.targetHighlighted)
         // The element must have a position, if it doesn't have one, add a relative position class
-        if (!this.targetElement.style.position) {
+        if (!this.targetElement.style.position && 
+        (typeof this.step.params.doNotChangeTargetPositionStyle == 'undefined' ||
+         typeof this.step.params.doNotChangeTargetPositionStyle !== 'undefined' && !this.step.params.doNotChangeTargetPositionStyle)
+         ) {
           this.targetElement.classList.add(HIGHLIGHT.classes.targetRelative)
         }
       } else {
