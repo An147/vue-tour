@@ -32,7 +32,7 @@
         :highlight="customOptions.highlight"
         :stop-on-fail="customOptions.stopOnTargetNotFound"
         :debug="customOptions.debug"
-        @targetNotFound="$emit('targetNotFound', $event)"
+        @targetNotFound="onTargetNotFound"
       >
         <!--<div v-if="index === 2" slot="actions">
           <a @click="nextStep">Next step</a>
@@ -111,6 +111,47 @@ export default {
     }
   },
   methods: {
+    async onTargetNotFound(stepData){
+      if(stepData.missing_target){
+        let nextStepIndex = await stepData.missing_target();
+
+        //now just copy of nextStep() but with defined indexes
+        let futureStep = nextStepIndex;
+
+        let process = () => new Promise((resolve, reject) => {
+          // this.customCallbacks.onNextStep(this.currentStep, this.steps[this.currentStep])
+          this.currentStep = futureStep
+          resolve()
+        })
+
+        if (futureStep < this.numberOfSteps && this.currentStep !== -1) {
+          
+            let step = this.steps[futureStep]
+
+            if (typeof step.before !== 'undefined') {
+              try {
+                await step.before('next')
+              } catch (e) {
+                return Promise.reject(e)
+              }
+            }
+
+          await process()
+
+        }
+
+        return Promise.resolve()
+
+        // this.previousStep = this.currentStep;
+        // this.currentStep = nextStepIndex;
+        // this.futureStep = this.currentStep + 1;
+
+        await process()
+
+        return Promise.resolve()
+      }
+      // $emit('targetNotFound', $event);
+    },
     async start (startStep) {
       // Register keyup listeners for this tour
       if (this.customOptions.useKeyboardNavigation) {
