@@ -205,6 +205,11 @@ export default {
     async nextStep () {
       let futureStep = this.currentStep + 1
 
+      if (typeof this.steps[this.currentStep].skipNext !== 'undefined') {
+        let skipCount = Number(this.steps[this.currentStep].skipNext)
+        futureStep = this.currentStep + 1 + skipCount
+      }
+
       let process = () => new Promise((resolve, reject) => {
         this.customCallbacks.onNextStep(this.currentStep, this.steps[this.currentStep])
         this.currentStep = futureStep
