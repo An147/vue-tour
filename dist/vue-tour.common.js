@@ -4782,12 +4782,12 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__("b0c0");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5c2140ae-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VTour.vue?vue&type=template&id=33679f84&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"v-tour"},[_vm._t("default",[(_vm.steps[_vm.currentStep])?_c('v-step',{key:_vm.currentStep,attrs:{"step":_vm.steps[_vm.currentStep],"previous-step":_vm.previousStep,"next-step":_vm.nextStep,"stop":_vm.stop,"skip":_vm.skip,"finish":_vm.finish,"is-first":_vm.isFirst,"is-last":_vm.isLast,"labels":_vm.customOptions.labels,"enabled-buttons":_vm.customOptions.enabledButtons,"highlight":_vm.customOptions.highlight,"stop-on-fail":_vm.customOptions.stopOnTargetNotFound,"debug":_vm.customOptions.debug},on:{"targetNotFound":function($event){return _vm.$emit('targetNotFound', $event)}}}):_vm._e()],{"currentStep":_vm.currentStep,"steps":_vm.steps,"previousStep":_vm.previousStep,"nextStep":_vm.nextStep,"stop":_vm.stop,"skip":_vm.skip,"finish":_vm.finish,"isFirst":_vm.isFirst,"isLast":_vm.isLast,"labels":_vm.customOptions.labels,"enabledButtons":_vm.customOptions.enabledButtons,"highlight":_vm.customOptions.highlight,"debug":_vm.customOptions.debug})],2)}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5c2140ae-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VTour.vue?vue&type=template&id=2070fdf3&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"v-tour"},[_vm._t("default",[(_vm.steps[_vm.currentStep])?_c('v-step',{key:_vm.currentStep,attrs:{"step":_vm.steps[_vm.currentStep],"previous-step":_vm.previousStep,"next-step":_vm.nextStep,"stop":_vm.stop,"skip":_vm.skip,"finish":_vm.finish,"is-first":_vm.isFirst,"is-last":_vm.isLast,"labels":_vm.customOptions.labels,"enabled-buttons":_vm.customOptions.enabledButtons,"highlight":_vm.customOptions.highlight,"stop-on-fail":_vm.customOptions.stopOnTargetNotFound,"debug":_vm.customOptions.debug},on:{"targetNotFound":_vm.onTargetNotFound}}):_vm._e()],{"currentStep":_vm.currentStep,"steps":_vm.steps,"previousStep":_vm.previousStep,"nextStep":_vm.nextStep,"stop":_vm.stop,"skip":_vm.skip,"finish":_vm.finish,"isFirst":_vm.isFirst,"isLast":_vm.isLast,"labels":_vm.customOptions.labels,"enabledButtons":_vm.customOptions.enabledButtons,"highlight":_vm.customOptions.highlight,"debug":_vm.customOptions.debug})],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VTour.vue?vue&type=template&id=33679f84&
+// CONCATENATED MODULE: ./src/components/VTour.vue?vue&type=template&id=2070fdf3&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
 var es_promise = __webpack_require__("e6cf");
@@ -5100,94 +5100,104 @@ var KEYS = {
     }
   },
   methods: {
-    start: function start(startStep) {
+    onTargetNotFound: function onTargetNotFound(stepData) {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        var step, process;
+        var nextStepIndex, futureStep, process, step;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                // Register keyup listeners for this tour
-                if (_this.customOptions.useKeyboardNavigation) {
-                  window.addEventListener('keyup', _this.handleKeyup);
-                } // Wait for the DOM to be loaded, then start the tour
-
-
-                startStep = typeof startStep !== 'undefined' ? parseInt(startStep, 10) : 0;
-                step = _this.steps[startStep];
-
-                process = function process() {
-                  return new Promise(function (resolve, reject) {
-                    setTimeout(function () {
-                      _this.customCallbacks.onStart();
-
-                      _this.currentStep = startStep;
-                      resolve();
-                    }, _this.customOptions.startTimeout);
-                  });
-                };
-
-                if (!(typeof step.before !== 'undefined')) {
-                  _context.next = 13;
+                if (!stepData.onMissingTarget) {
+                  _context.next = 20;
                   break;
                 }
 
-                _context.prev = 5;
-                _context.next = 8;
-                return step.before('start');
+                _context.next = 3;
+                return stepData.onMissingTarget();
 
-              case 8:
-                _context.next = 13;
-                break;
-
-              case 10:
-                _context.prev = 10;
-                _context.t0 = _context["catch"](5);
-                return _context.abrupt("return", Promise.reject(_context.t0));
-
-              case 13:
-                _context.next = 15;
-                return process();
-
-              case 15:
-                return _context.abrupt("return", Promise.resolve());
-
-              case 16:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, null, [[5, 10]]);
-      }))();
-    },
-    previousStep: function previousStep() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-        var futureStep, process, step;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                futureStep = _this2.currentStep - 1;
+              case 3:
+                nextStepIndex = _context.sent;
+                // now just copy of nextStep() but with defined indexes
+                futureStep = nextStepIndex;
 
                 process = function process() {
                   return new Promise(function (resolve, reject) {
-                    _this2.customCallbacks.onPreviousStep(_this2.currentStep, _this2.steps[_this2.currentStep]);
-
-                    _this2.currentStep = futureStep;
+                    // this.customCallbacks.onNextStep(this.currentStep, this.steps[this.currentStep])
+                    _this.currentStep = futureStep;
                     resolve();
                   });
                 };
 
-                if (!(futureStep > -1)) {
-                  _context2.next = 15;
+                if (!(futureStep < _this.numberOfSteps && _this.currentStep !== -1)) {
+                  _context.next = 19;
                   break;
                 }
 
-                step = _this2.steps[futureStep];
+                step = _this.steps[futureStep];
+
+                if (!(typeof step.before !== 'undefined')) {
+                  _context.next = 17;
+                  break;
+                }
+
+                _context.prev = 9;
+                _context.next = 12;
+                return step.before('next');
+
+              case 12:
+                _context.next = 17;
+                break;
+
+              case 14:
+                _context.prev = 14;
+                _context.t0 = _context["catch"](9);
+                return _context.abrupt("return", Promise.reject(_context.t0));
+
+              case 17:
+                _context.next = 19;
+                return process();
+
+              case 19:
+                return _context.abrupt("return", Promise.resolve());
+
+              case 20:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[9, 14]]);
+      }))();
+    },
+    start: function start(startStep) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+        var step, process;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                // Register keyup listeners for this tour
+                if (_this2.customOptions.useKeyboardNavigation) {
+                  window.addEventListener('keyup', _this2.handleKeyup);
+                } // Wait for the DOM to be loaded, then start the tour
+
+
+                startStep = typeof startStep !== 'undefined' ? parseInt(startStep, 10) : 0;
+                step = _this2.steps[startStep];
+
+                process = function process() {
+                  return new Promise(function (resolve, reject) {
+                    setTimeout(function () {
+                      _this2.customCallbacks.onStart();
+
+                      _this2.currentStep = startStep;
+                      resolve();
+                    }, _this2.customOptions.startTimeout);
+                  });
+                };
 
                 if (!(typeof step.before !== 'undefined')) {
                   _context2.next = 13;
@@ -5196,7 +5206,7 @@ var KEYS = {
 
                 _context2.prev = 5;
                 _context2.next = 8;
-                return step.before('previous');
+                return step.before('start');
 
               case 8:
                 _context2.next = 13;
@@ -5222,7 +5232,7 @@ var KEYS = {
         }, _callee2, null, [[5, 10]]);
       }))();
     },
-    nextStep: function nextStep() {
+    previousStep: function previousStep() {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
@@ -5231,18 +5241,18 @@ var KEYS = {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                futureStep = _this3.currentStep + 1;
+                futureStep = _this3.currentStep - 1;
 
                 process = function process() {
                   return new Promise(function (resolve, reject) {
-                    _this3.customCallbacks.onNextStep(_this3.currentStep, _this3.steps[_this3.currentStep]);
+                    _this3.customCallbacks.onPreviousStep(_this3.currentStep, _this3.steps[_this3.currentStep]);
 
                     _this3.currentStep = futureStep;
                     resolve();
                   });
                 };
 
-                if (!(futureStep < _this3.numberOfSteps && _this3.currentStep !== -1)) {
+                if (!(futureStep > -1)) {
                   _context3.next = 15;
                   break;
                 }
@@ -5256,7 +5266,7 @@ var KEYS = {
 
                 _context3.prev = 5;
                 _context3.next = 8;
-                return step.before('next');
+                return step.before('previous');
 
               case 8:
                 _context3.next = 13;
@@ -5280,6 +5290,66 @@ var KEYS = {
             }
           }
         }, _callee3, null, [[5, 10]]);
+      }))();
+    },
+    nextStep: function nextStep() {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+        var futureStep, process, step;
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                futureStep = _this4.currentStep + 1;
+
+                process = function process() {
+                  return new Promise(function (resolve, reject) {
+                    _this4.customCallbacks.onNextStep(_this4.currentStep, _this4.steps[_this4.currentStep]);
+
+                    _this4.currentStep = futureStep;
+                    resolve();
+                  });
+                };
+
+                if (!(futureStep < _this4.numberOfSteps && _this4.currentStep !== -1)) {
+                  _context4.next = 15;
+                  break;
+                }
+
+                step = _this4.steps[futureStep];
+
+                if (!(typeof step.before !== 'undefined')) {
+                  _context4.next = 13;
+                  break;
+                }
+
+                _context4.prev = 5;
+                _context4.next = 8;
+                return step.before('next');
+
+              case 8:
+                _context4.next = 13;
+                break;
+
+              case 10:
+                _context4.prev = 10;
+                _context4.t0 = _context4["catch"](5);
+                return _context4.abrupt("return", Promise.reject(_context4.t0));
+
+              case 13:
+                _context4.next = 15;
+                return process();
+
+              case 15:
+                return _context4.abrupt("return", Promise.resolve());
+
+              case 16:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[5, 10]]);
       }))();
     },
     stop: function stop() {
