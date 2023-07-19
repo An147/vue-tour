@@ -146,7 +146,7 @@ export default {
         // await process()
         // return Promise.resolve()
       }
-      $emit('targetNotFound', $event)
+      // this.$emit('targetNotFound', $event)
     },
     async start (startStep) {
       // Register keyup listeners for this tour
